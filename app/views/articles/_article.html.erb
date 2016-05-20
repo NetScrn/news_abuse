@@ -1,6 +1,8 @@
-<div class="article">
-  <h3><%= article.title %></h3>
-  <p>
-    <%= article.description %>
-  </p>
-</div>
+<%= link_to article, class: "article-link col-xs-12 col-sm-12 col-md-12" do %>
+  <article>
+    <h3><%= article.title %></h3>
+    <small>
+      <%= article.description %>
+    </small>
+  </article>
+<% end %>
