@@ -15,13 +15,13 @@ gem 'pg'
 gem 'devise'
 
 group :development, :test do
+  gem 'faker'
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
