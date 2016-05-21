@@ -5,13 +5,15 @@
 Category.destroy_all
 Article.destroy_all
 
-["Спорт", "Политика", "Технологии"].each do |cat|
+["Спорт", "Политика", "Технологии",
+  "Музыка", "Мир", "Архитектура",
+  "Программирование", "Металургия", "Машиностроение"].each do |cat|
   Category.create(name: cat)
 end
 
 
 if Rails.env.development?
-  10.times do
+  40.times do
     Article.create(title: Faker::Lorem.words(rand(1..3)).join(" ").capitalize, description: Faker::Lorem.sentence(rand(1..3)))
   end
 

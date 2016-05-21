@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to root_path do %>
-        <%= image_tag "new_abuse", width: 40, heihgt: 40, class: "pull-left logo-img" %>
+        <%= image_tag "new_abuse", width: 27, heihgt: 27, class: "pull-left logo-img" %>
       <% end %>
       </a>
       <%= link_to root_path, class: "navbar-brand" do %>
@@ -38,6 +38,9 @@
         </li>
         <% end %>
         <% unless user_signed_in? %>
+          <% unless current_page? "/" %>
+          <li><%= link_to "Регистрация", new_user_registration_path %></li>
+          <% end %>
           <li><%= link_to "Вход", new_user_session_path %></li>
         <% end %>
       </ul>

@@ -1,5 +1,9 @@
 <div class="jumbotron">
-  <% unless user_signed_in? %>
+  <% if user_signed_in? %>
+    <h1>Когданибудь здесь что-нибудь будет</h1>
+    <p>А пока просто нажми кнопку</p>
+    <button class="btn btn-primary btn-lg" onclick="alert('Молодец!')">Кнопка</button>
+  <% else %>
     <h1>Краудсорсинговый портал</h1>
     <h1>News Abuse</h1>
     <p>Делись новостями!</p>

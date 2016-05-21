@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "static";
 @import "articles";
+@import "categories";
 
 body {
   font-size: 16px;
@@ -14,12 +15,11 @@ body {
   border-radius: 0;
 
   .logo-img {
-    margin: 10px 10px 0 0;
+    margin: 10px 15px 0 0;
     padding-bottom: 10px
   }
 
   #navbar-collapse {
-    margin-top: 7px;
 
     ul {
       img {
@@ -31,7 +31,7 @@ body {
   }
 
   .navbar-brand {
-    margin-top: 4px;
+    margin-top: -4px;
 
     h1 {
       font-size: 1.5em;

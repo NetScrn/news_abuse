@@ -1,0 +1,19 @@
+<div class="category col-xs-12 col-sm-6 col-md-4">
+  <article>
+    <%= link_to category do %>
+      <h3 class="text-center"><%= category.name %></h3>
+    <% end %>
+    <ul>
+      <% category.articles[0..2].each do |article| %>
+        <li>
+          <h4><%= article.title %></h4>
+          <small><%= article.description %></small>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+</div>
+
+<%= cycle("",raw("<div class=\"clearfix visible-sm-block\"></div>"), name: "two") %>
+
+<%= cycle("","", raw("<div class=\"clearfix visible-lg-block visible-md-block \"></div>"), name: "three") %>

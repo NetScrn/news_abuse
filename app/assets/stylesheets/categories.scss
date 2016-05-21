@@ -1,3 +1,33 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.category {
+  padding: 10px;
+  margin: 0;
+  article {
+    background-color: #f1f1f1;
+    position: relative;
+    padding-top: 35px;
+    border-radius: 3px;
+
+    a {
+      color: inherit;
+      &:hover {
+        color: #2a79ff;
+      }
+
+      h3 {
+        width: 100%;
+        padding: 5px 15px;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #bbd2ff;
+        border-radius: 3px 3px 0 0;
+      }
+    }
+  }
+}

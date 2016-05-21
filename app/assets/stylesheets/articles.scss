@@ -2,19 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-article {
-  padding: 10px 25px;
-  border-radius: 3px;
-  background-color: #f1f1f1;
-  margin-bottom: 15px;
-  h3 {
-    margin: 0;
-  }
-  p {
-    margin: 0;
-    text-align: left;
-  }
-}
 
 .article-link {
   color: inherit;
@@ -22,5 +9,19 @@ article {
   &:hover {
     text-decoration: none;
     color: inherit;
+  }
+
+  article {
+    padding: 10px 25px;
+    border-radius: 3px;
+    background-color: #f1f1f1;
+    margin-bottom: 15px;
+    h3 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      text-align: left;
+    }
   }
 }
