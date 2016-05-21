@@ -9,15 +9,43 @@
   article {
     background-color: #f1f1f1;
     position: relative;
-    padding-top: 35px;
+    padding-top: 45px;
+    padding-bottom: 1px;
     border-radius: 3px;
+
+    ul {
+      margin: 0;
+      padding: 0 20px;
+      list-style-type: none;
+      li {
+        padding: 5px;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        &:hover {
+          background-color: #d7e6ff;
+        }
+        h4 {
+          margin: 0;
+          padding: 0;
+        }
+        small {
+          color: #595959;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
 
     a {
       color: inherit;
       &:hover {
         color: #2a79ff;
       }
-
       h3 {
         width: 100%;
         padding: 5px 15px;
