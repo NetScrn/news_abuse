@@ -1,6 +1,8 @@
 <div class="jumbotron">
-  <h1>Краудсорсинговый портал</h1>
-  <h1>News Abuse</h1>
-  <p>Делись новостями!</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Регистрация</a></p>
+  <% unless user_signed_in? %>
+    <h1>Краудсорсинговый портал</h1>
+    <h1>News Abuse</h1>
+    <p>Делись новостями!</p>
+    <p><%= link_to "Регистрация", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+  <% end %>
 </div>
