@@ -13,6 +13,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'redactor-rails'
 gem 'pg'
 gem 'devise'
+gem "carrierwave"
+gem "mini_magick"
+gem "simple_form"
 
 group :development, :test do
   gem 'faker'

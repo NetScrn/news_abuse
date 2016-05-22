@@ -3,6 +3,8 @@
 @import "static";
 @import "articles";
 @import "categories";
+@import "redactor-rails.css";
+@import "redactor-rails/plugins.css";
 
 body {
   font-size: 16px;
@@ -50,10 +52,11 @@ body {
   }
 }
 
-
-
-
-
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
 
 .alert-notice {
   @extend .alert-success;

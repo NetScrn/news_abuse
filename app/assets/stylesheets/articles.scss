@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// INDEX
 .article-link {
   color: inherit;
   text-decoration: none;
@@ -22,6 +22,33 @@
     p {
       margin: 0;
       text-align: left;
+    }
+  }
+}
+
+
+// SHOW
+.category-tags{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .category-tag {
+    font-size: 0.9em;
+  }
+}
+
+.article-title {
+  font-size: 3em !important;
+  text-align: left !important;
+}
+.main-article {
+  article {
+    padding: 20px;
+  }
+
+
+  aside {
+    .panel-title{
+      font-size: 1.2em;
     }
   }
 }
