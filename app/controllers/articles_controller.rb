@@ -27,6 +27,14 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      flash[:success] = "Статья успешно обновлена"
+      redirect_to @article
+    else
+      flash.now[:danger] = "Статья не была обновлена"
+      render "new"
+    end
   end
 
   private
