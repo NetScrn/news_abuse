@@ -1,0 +1,8 @@
+<%= simple_form_for article do |f| %>
+  <%= f.input :title, label: "Название" %>
+  <%= f.input :description, label: "Краткое описание" %>
+  <%= label_tag "article[body]", raw("<abbr title=\"Обязательно\">*</abbr> Редактор статьи") %>
+  <%= text_area_tag "article[body]", article.body, :class => "redactor", :rows => 1200, :cols => 120, id: "redactor-tf"%>
+
+  <%= f.button :submit, value: "Создать статью", class: "btn-primary" %>
+<% end %>
