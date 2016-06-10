@@ -1,6 +1,11 @@
-<% provide(:title, "Все статьи")%>
-<h2>Все статьи:</h2>
+<% provide(:title, "Все статьи") %>
 
-<div class="row">
-  <%= render @articles %>
-</div>
+<!-- <div class="article-page">
+  <h2>Все статьи:</h2>
+
+  <div class="row">
+    <% # render @articles %>
+  </div>
+</div> -->
+
+<%= react_component "Articles", { data: @articles } %>
