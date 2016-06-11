@@ -55,6 +55,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  #add convenience way to use FactgoryGirl
+  # Add convenience way to use FactgoryGirl
   config.include FactoryGirl::Syntax::Methods
 end
