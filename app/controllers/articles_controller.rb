@@ -10,10 +10,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:success] = "Статья была успешно создана."
+      flash[:success] = t(:art_created)
       redirect_to @article
     else
-      flash.now[:danger] = "Статья не была создана."
+      flash.now[:danger] = t(:art_n_created)
       render "new"
     end
   end

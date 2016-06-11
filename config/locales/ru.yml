@@ -1,5 +1,24 @@
 ru:
-  hello: "Hello World"
+  registration: "Регистрация"
+  login: "Вход"
+  logout: "Выход"
+  categories: "Категории"
+  articles: "Статьи"
+  settings: "Настройки"
+  language: "Язык"
+  russian: "Русский"
+  english: "Английский"
+  home_path: "Главная"
+  art_created: "Статья была успешно создана."
+  art_n_created: "Статья не была создана."
+
+
+
+
+
+
+
+
   activerecord:
     errors:
       models:
