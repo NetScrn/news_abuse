@@ -6,7 +6,6 @@
   render: ->
     React.DOM.div
       className: "articles-page"
-      React.DOM.h2 null, "Все статьи:"
       React.DOM.div
         className: "row"
         for article in @state.articles

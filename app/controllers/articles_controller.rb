@@ -10,10 +10,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:success] = t(:art_created)
+      flash[:success] = I18n.t(:art_created)
       redirect_to @article
     else
-      flash.now[:danger] = t(:art_n_created)
+      flash.now[:danger] = I18n.t(:art_n_created)
       render "new"
     end
   end

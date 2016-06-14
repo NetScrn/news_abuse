@@ -1,4 +1,6 @@
-<h2>Все категории:</h2>
+<% provide(:title, t(:all_categories)) %>
+
+<h2><%= t(:all_categories) %>:</h2>
 
 <div class="row">
   <%= render @categories %>
