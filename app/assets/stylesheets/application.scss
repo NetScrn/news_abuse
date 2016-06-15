@@ -97,7 +97,7 @@ body {
       }
     }
   }
-  //add margins styling registr. form
+  //REGISTRATION AND SESSIONS FORMS
   #new_user {
     div {
       margin-top: 10px;
@@ -105,8 +105,16 @@ body {
   }
   //add sessions styling
   .check-box-sessions{
-      width: 20%;
-      border-left: 1px solid #98a1a0;
-      border-right: 1px solid #98a1a0;
+      width: 15%;
+  }
+
+  .input-group {
+    width: 15%;
+  }
+
+  .redactor-box {
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
   }
 }

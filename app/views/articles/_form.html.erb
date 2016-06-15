@@ -1,8 +1,20 @@
-<%= simple_form_for article do |f| %>
-  <%= f.input :title, label: "Название" %>
-  <%= f.input :description, label: "Краткое описание" %>
-  <%= label_tag "article[body]", raw("<abbr title=\"Обязательно\">*</abbr> Редактор статьи") %>
-  <%= text_area_tag "article[body]", article.body, :class => "redactor", :rows => 1200, :cols => 120, id: "redactor-tf"%>
 
-  <%= f.button :submit, value: "Создать статью", class: "btn-primary" %>
-<% end %>
+<div class="article-form">
+  <%= simple_form_for article do |f| %>
+    <%= f.input :title, label: t("activerecord.attributes.article.title") %>
+    <%= f.input :description, label: t("activerecord.attributes.article.description") %>
+    <%= label_tag "article[body]", raw("<abbr title=\"Обязательно\">*</abbr> #{t("activerecord.attributes.article.body")}") %>
+    <%= text_area_tag "article[body]", article.body, :class => "redactor", :rows => 1200, :cols => 120, id: "redactor-tf"%>
+    <% if article.errors.any? %>
+      <div class='error_messages'>
+        <ul>
+          <% article.errors[:body].each do |message, m| %>
+            <li><%= t("activerecord.attributes.article.body") + ": " + message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.button :submit, value: "Создать статью", class: "btn-primary" %>
+  <% end %>
+</div>

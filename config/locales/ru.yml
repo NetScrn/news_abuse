@@ -11,6 +11,23 @@ ru:
 
 
   activerecord:
+    models:
+      user:
+        one: Пользователь
+        other: Пользователи
+      article:
+        one: Статья
+        other: Статьи
+      category:
+        one: Категория
+        other: Категории
+    attributes:
+      article:
+        title: Название
+        description: Описание
+        body: Содержание
+      category:
+        name: Имя
     errors:
       models:
         article:
