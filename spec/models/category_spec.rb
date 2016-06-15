@@ -12,4 +12,10 @@ RSpec.describe Category, type: :model do
 
     expect([category.articles[0],category.articles[1]]).to eql([article2, article1])
   end
+
+  it "It should has name value minimum 2 characters" do
+    category = build(:category,
+      name: "3")
+    expect(category).to_not be_valid
+  end
 end
