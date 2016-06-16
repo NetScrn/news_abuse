@@ -8,6 +8,7 @@ ru:
   english: "Английский"
   home_path: "Главная"
   user_login: "Логин"
+  published: "Опубликовано"
 
 
   activerecord:

@@ -1,0 +1,7 @@
+<h2><%= @category.name %></h2>
+
+<% @category.articles.each do |article| %>
+  <%= render "articles/article", article: article %>
+<% end %>
+
+<% # react_component "Articles", { data: @category.articles } %>

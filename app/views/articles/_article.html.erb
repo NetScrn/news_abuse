@@ -4,5 +4,6 @@
     <small>
       <%= article.description %>
     </small>
+    <div class="created-at"><%="#{t(:published)}: #{(article.created_at.strftime("%d-%m-%Y %H-%M"))}" %></div>
   </article>
 <% end %>

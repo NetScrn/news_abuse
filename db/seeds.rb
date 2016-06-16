@@ -13,7 +13,7 @@ end
 
 
 if Rails.env.development?
-  40.times do
+  80.times do
     Article.create(title: Faker::Lorem.words(rand(1..3)).join(" ").capitalize,
                    description: Faker::Lorem.sentence(rand(1..3)),
                    body: Faker::Lorem.paragraphs(6).join(" "))
