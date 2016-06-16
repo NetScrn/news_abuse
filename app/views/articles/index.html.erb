@@ -2,4 +2,8 @@
 
 <h2><%= t(:all_articles) %>:</h2>
 
-<%= render @articles %>
+<%= link_to t(:new_article), new_article_path, class: "btn btn-primary pull-right" %>
+
+<section class="articles">
+  <%= render @articles %>
+</section>

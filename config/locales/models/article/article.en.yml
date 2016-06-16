@@ -3,3 +3,5 @@ en:
   all_articles: "All articles"
   art_created: "Article has been successfuly created."
   art_n_created: "Article has been not created."
+  new_article: "New Article"
+  create_article: "Create Article"

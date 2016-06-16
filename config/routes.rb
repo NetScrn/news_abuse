@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     devise_for :users
     root to: "static#home"
 
-    resources :articles, only: [:index, :show, :new, :create, :edit, :update]
-    resources :categories, only: [:index, :show]
+    resources :articles, except: :destroy
+    resources :categories, only: [:index, :show] do
+      member do
+        get 'new_article', to: 'articles#new'
+      end
+    end
   end
 end
