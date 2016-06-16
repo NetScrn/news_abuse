@@ -10,8 +10,8 @@
       </ul>
       <div>
         <ul class="pull-right"><%= t(:language) %>:
-          <li><%= link_to t(:russian), "/ru" %></li>
-          <li><%= link_to t(:english), "/en" %></li>
+          <li><%= link_to t(:russian), request.fullpath.sub("en", "ru") %></li>
+          <li><%= link_to t(:english), request.fullpath.sub("ru", "en") %></li>
         </ul>
       </div>
     </nav>
