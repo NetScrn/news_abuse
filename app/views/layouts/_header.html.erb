@@ -8,12 +8,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to root_path do %>
-          <%= image_tag "new_abuse", width: 27, heihgt: 27, class: "pull-left logo-img" %>
-        <% end %>
+
         </a>
         <%= link_to root_path, class: "navbar-brand" do %>
-          <h1>News Abuse</h1>
+          <h1>ews Abuse
+            <%= image_tag "new_abuse", width: 27, heihgt: 27, class: "logo-img pull-left" %>
+          </h1>
         <% end %>
         </a>
       </div>
@@ -21,7 +21,6 @@
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav">
           <li><%= link_to t(:categories), categories_path %></li>
-          <li><%= link_to t(:articles), articles_path %></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

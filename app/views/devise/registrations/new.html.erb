@@ -14,19 +14,19 @@
   </div>
 
   <div class="field input-group">
-    <%= f.label "Пароль" %>
+    <%= f.label t(:password) %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> символов минимум)</em>
+    <em>(<%= "#{@minimum_password_length} #{t(:symbols_min)}"%> )</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
   <div class="field input-group">
-    <%= f.label "Подтверждение пароля" %><br />
+    <%= f.label t(:password_confirmation) %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Зарегистрироваться", class: "btn btn-info" %>
+    <%= f.submit t(:registration), class: "btn btn-primary" %>
   </div>
 <% end %>

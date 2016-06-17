@@ -1,8 +1,4 @@
 class ArticlesController < ApplicationController
-  def index
-    @articles = Article.order(created_at: :desc)
-  end
-
   def new
     @article = Article.new
   end
@@ -10,7 +6,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      @article.categories << Category.find(params[:category]) if params[:category]
       flash[:success] = I18n.t(:art_created)
       redirect_to @article
     else

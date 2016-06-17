@@ -2,6 +2,10 @@ ru:
   registration: "Регистрация"
   login: "Вход"
   logout: "Выход"
+  password: "Пароль"
+  password_confirmation: "Подтверждение пароля"
+  remember_me: "Запомнить меня"
+  symbols_min: "символов минимум"
   settings: "Настройки"
   language: "Язык"
   russian: "Русский"
@@ -9,6 +13,7 @@ ru:
   home_path: "Главная"
   user_login: "Логин"
   published: "Опубликовано"
+
 
 
   activerecord:
