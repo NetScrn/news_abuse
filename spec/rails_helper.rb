@@ -57,4 +57,8 @@ RSpec.configure do |config|
 
   # Add convenience way to use FactgoryGirl
   config.include FactoryGirl::Syntax::Methods
+
+  config.include Warden::Test::Helpers, type: :feature
+  config.after(type: :feature) { Warden.test_reset! }
+  config.include Devise::TestHelpers, type: :controller
 end
