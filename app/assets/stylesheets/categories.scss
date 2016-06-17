@@ -1,13 +1,10 @@
-// Place all the styles related to the categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "variables";
 
 .category {
   padding: 10px;
   margin: 0;
   article {
-    background-color: #f1f1f1;
+    background-color: $list-light-color;
     position: relative;
     padding-top: 45px;
     padding-bottom: 1px;
@@ -22,14 +19,14 @@
         border-radius: 3px;
         margin-bottom: 10px;
         &:hover {
-          background-color: #d7e6ff;
+          background-color: $main-super-light;
         }
         h4 {
           margin: 0;
           padding: 0;
         }
         small {
-          color: #595959;
+          color: $main-light-text-color;
         }
       }
 
@@ -53,7 +50,7 @@
         position: absolute;
         right: 0;
         top: 0;
-        background-color: #bbd2ff;
+        background-color: $main-light-color;
         border-radius: 3px 3px 0 0;
       }
     }

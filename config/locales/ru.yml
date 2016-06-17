@@ -14,6 +14,11 @@ ru:
   user_login: "Логин"
   published: "Опубликовано"
 
+  will_paginate:
+    previous_label: "&#8592; Назад"
+    next_label: "Вперед &#8594;"
+    page_gap: "&hellip;"
+
 
 
   activerecord:

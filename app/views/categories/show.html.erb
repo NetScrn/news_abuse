@@ -1,9 +1,18 @@
 <h2><%= @category.name %></h2>
 
+
+<div class="pagination-1">
+  <%= will_paginate @articles %>
+</div>
+
 <section class="articles">
-  <% @category.articles.each do |article| %>
+  <% @articles.each do |article| %>
     <%= render "articles/article", article: article %>
   <% end %>
 </section>
+
+<div class="pagination-1">
+  <%= will_paginate @articles %>
+</div>
 
 <% # react_component "Articles", { data: @category.articles } %>
