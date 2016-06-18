@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Users can create article' do
-
-  it 'should create valid article' do
+  it 'authenticated should create valid article' do
+    login_as create(:user)
     visit categories_path("en")
+
     click_link "New Article"
 
     fill_in "Title", with: "Ruby on Rails is awesome!"
@@ -14,5 +15,14 @@ RSpec.describe 'Users can create article' do
 
     expect(page).to have_content "Article has been successfuly created."
     expect(page).to have_content "Ruby on Rails is awesome!"
+  end
+
+  it 'unauthenticated users cannot create articles' do
+    visit categories_path("en")
+    
+    click_link "New Article"
+
+    message = "You need to sign in or sign up before continuing."
+    expect(page).to have_content message
   end
 end
