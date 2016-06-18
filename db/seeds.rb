@@ -10,7 +10,7 @@ User.create(username: "admin", email: "viewer@ticketee.com", password: "password
 
 ["Спорт", "Политика", "Технологии",
   "Музыка", "Мир", "Архитектура",
-  "Программирование", "Металургия", "Машиностроение"].each do |cat|
+  "Программирование", "Металургия", "Машиностроение", "Медицина"].each do |cat|
   Category.create(name: cat)
 end
 

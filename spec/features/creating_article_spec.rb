@@ -19,10 +19,7 @@ RSpec.describe 'Users can create article' do
 
   it 'unauthenticated users cannot create articles' do
     visit categories_path("en")
-    
-    click_link "New Article"
 
-    message = "You need to sign in or sign up before continuing."
-    expect(page).to have_content message
+    expect(page).to_not have_content "New Article"
   end
 end
