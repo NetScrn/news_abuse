@@ -35,14 +35,16 @@ body {
 
     a {
       color: white;
-      border-top: 2px solid rgba(#ffffff, 0);
-      &:hover {
-        border-top: 2px solid #fafafa;
-      }
+
     }
     .navbar-nav {
       li {
-
+        a {
+          border-top: 2px solid rgba(#ffffff, 0);
+          &:hover {
+            border-top: 2px solid white;
+          }
+        }
       }
     }
 
