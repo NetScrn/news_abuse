@@ -5,3 +5,4 @@ en:
   art_n_created: "Article has been not created."
   new_article: "New Article"
   create_article: "Create Article"
+  article_deleted: "Article has been successfuly deleted."

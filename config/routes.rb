@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     devise_for :users
     root to: "static#home"
 
-    resources :articles, except: [:index, :destroy]
+    resources :articles, except: [:index]
     resources :categories, only: [:index, :show]
   end
 end
