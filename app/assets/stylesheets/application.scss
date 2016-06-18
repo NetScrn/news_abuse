@@ -49,7 +49,20 @@ body {
     }
 
     #navbar-collapse {
-
+      .open {
+        a{
+          background-color: #8192da;
+        }
+      }
+      .dropdown-menu {
+        a {
+          background-color: white;
+          color: $main-text-color;
+          &:hover {
+            background-color: #eeeeee;
+          }
+        }
+      }
       ul {
         img {
           border-radius: 50%;
