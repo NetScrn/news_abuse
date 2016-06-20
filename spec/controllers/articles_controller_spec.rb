@@ -35,6 +35,15 @@ RSpec.describe ArticlesController do
           post :create, article: attributes_for(:article)
           expect(response).to redirect_to article_path(assigns(:article))
         end
+
+        it 'articles created with information about the user who created it' do
+          user = create(:user)
+          sign_in user
+
+          post :create, article: attributes_for(:article, title: "Hallo User")
+          article = Article.find_by(title: "Hallo User")
+          expect(article.author).to eq user
+        end
       end
 
       context 'with invalid attributes' do
@@ -113,28 +122,28 @@ RSpec.describe ArticlesController do
   describe 'guest access to articles' do
     it_behaves_like 'public access to articles'
 
-    describe 'permitted actions' do
-      it 'requires login GET #new' do
+    context 'requires login' do
+      it 'GET #new' do
         get :new
         expect(response).to require_login
       end
 
-      it 'requires login POST #create' do
+      it 'POST #create' do
         post :create
         expect(response).to require_login
       end
 
-      it 'requires login GET #edit' do
+      it 'GET #edit' do
         get :edit, id: create(:article)
         expect(response).to require_login
       end
 
-      it 'requires login PATCH #update' do
+      it 'PATCH #update' do
         patch :update, id: create(:article)
         expect(response).to require_login
       end
 
-      it 'requires login DELETE #destroy' do
+      it 'DELETE #destroy' do
         delete :destroy, id: create(:article)
         expect(response).to require_login
       end

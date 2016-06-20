@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       where(conditions.to_hash).first
     end
   end
-  
+
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)

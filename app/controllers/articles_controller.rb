@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.author = current_user
     if @article.save
       flash[:success] = I18n.t(:art_created)
       redirect_to @article
