@@ -1,8 +1,10 @@
 ru:
   articles: "Статьи"
   all_articles: "Все статьи"
-  art_created: "Статья была успешно создана."
-  art_n_created: "Статья не была создана."
+  article_created: "Статья была успешно создана."
+  article_n_created: "Статья не была создана."
   new_article: "Создать Cтатью"
   create_article: "Создать Cтатью"
   article_deleted: "Статья была успешно удалена."
+  article_updated: "Статья успешно обновлена."
+  article_n_updated: "Статья не была обновлена."
