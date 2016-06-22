@@ -53,12 +53,10 @@
   font-size: 3em !important;
   text-align: left !important;
 }
-.main-article {
-  article {
-    padding: 20px;
-  }
 
-
+.article-main {
+  padding: 20px;
+  
   aside {
     .panel-title{
       font-size: 1.2em;
@@ -66,6 +64,18 @@
   }
 }
 
+.actions {
+  a {
+    @extend .pull-right;
+    margin-right: 10px;
+    ul {
+      list-style-type: none;
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}
 // FORM
 
 .article-form {

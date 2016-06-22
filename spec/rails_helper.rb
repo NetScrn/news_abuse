@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 
-Capybara.javascript_driver = :webkit
+Capybara.default_wait_time = 15
 #
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
