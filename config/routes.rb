@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     root to: "static#home"
 
     resources :articles, except: [:index]
-    resources :categories, only: [:index, :show]
+    resources :categories, only: [:new, :index, :show]
   end
 end

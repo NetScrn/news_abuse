@@ -7,4 +7,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @articles = @category.articles.paginate(page: params[:page], per_page: 10)
   end
+
+  def new
+    @categories = Category.all
+    @index = params[:index].to_s
+    render layout: false
+  end
 end

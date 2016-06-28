@@ -1,3 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "page:change", ->
+  jQuery("#add_category").on "ajax:success", (event, data) ->
+    jQuery("#categories").append data
+    jQuery(this).data "params", { index: jQuery("#categories select").length + 1}

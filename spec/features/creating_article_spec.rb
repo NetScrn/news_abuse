@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Users can create article' do
-  let(:category) { create(:category) }
-  let(:other_category) { create(:category) }
-  
+  let!(:category) { create(:category) }
+  let!(:other_category) { create(:category, name: "Medicine") }
+
   it 'authenticated should create valid article', js: true do
     login_as create(:user)
     visit categories_path("en")
@@ -15,11 +15,16 @@ RSpec.describe 'Users can create article' do
     fill_in "Title",       with: "Ruby on Rails is awesome!"
     fill_in "Description", with: Faker::Lorem.paragraph
     page.execute_script("document.getElementById('redactor-tf').value = '#{body}'");
-    within("#categories")
-    select(category.name,       from: "1")
-    click_button "Add One More Category"
-    select(other_category.name, from: "2")
 
+    within("#categories") do
+      select(category.name,       from: "category")
+    end
+
+    click_link "Add Another Category"
+
+    within("#categories") do
+      select(other_category.name, from: "category_2")
+    end
 
     click_button "Create Article"
 

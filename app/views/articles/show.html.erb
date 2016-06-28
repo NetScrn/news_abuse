@@ -10,7 +10,7 @@
   <ul>
     <% if user_signed_in? %>
       <li><%= link_to t(:delete_article), @article, method: :delete, class: "btn btn-danger" %></li>
-      <li><%= link_to t(:update_article), @article, method: :putch, class: "btn btn-primary" %></li>
+      <li><%= link_to t(:update_article), [:edit, @article], class: "btn btn-primary" %></li>
     <% end %>
   </ul>
 </div>
@@ -27,8 +27,8 @@
       <div class="panel-heading"> <h3 class="panel-title"><%= t(:other_articles) %></h3></div>
       <div class="panel-body">
         <ul>
-          <li>Мамаша застрелила сына</li>
-          <li>Дед лтит на маркс</li>
+          <li>!!!!!!!!!!!!!!</li>
+          <li>!!!!!!!!</li>
         </ul>
       </div>
     </div>

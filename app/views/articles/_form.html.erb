@@ -3,6 +3,16 @@
   <%= simple_form_for article do |f| %>
     <%= f.input :title, label: t("activerecord.attributes.article.title") %>
     <%= f.input :description, label: t("activerecord.attributes.article.description") %>
+
+    <div id="categories">
+      <%= label_tag :category, "Category 1" %>
+      <%= select_tag :category, options_from_collection_for_select(categories, :id, :name),
+        name: "categories[category 1]", class: "form-control", include_blank: true %>
+    </div>
+
+    <%= link_to t(:add_another_category), new_category_path, remote: true,
+      data: {params: {index: 2}}, id: "add_category" %>
+
     <%= label_tag "article[body]", raw("<abbr title=\"Обязательно\">*</abbr> #{t("activerecord.attributes.article.body")}") %>
     <%= text_area_tag "article[body]", article.body, :class => "redactor", :rows => 1200, :cols => 120, id: "redactor-tf"%>
     <%= hidden_field_tag "category", params[:id] if params[:id] %>

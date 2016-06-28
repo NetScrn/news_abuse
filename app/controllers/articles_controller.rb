@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, except: [:new, :create]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
 
   def new
     @article = Article.new
@@ -7,6 +8,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
+    build_categories_for(@article)
     if @article.save
       flash[:success] = I18n.t(:article_created)
       redirect_to @article
@@ -46,5 +48,13 @@ class ArticlesController < ApplicationController
 
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.all
+    end
+
+    def build_categories_for(article)
+      article.category_ids = params.fetch(:categories, []).map {|k,v| v.to_i}
     end
 end
