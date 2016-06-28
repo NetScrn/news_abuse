@@ -15,15 +15,13 @@ User.create(username: "admin", email: "viewer@ticketee.com", password: "password
 end
 
 
-if Rails.env.development?
-  200.times do
-    Article.create(title: Faker::Lorem.words(rand(1..3)).join(" ").capitalize,
-                   description: Faker::Lorem.sentence(rand(1..3)),
-                   body: Faker::Lorem.paragraphs(6).join(" "))
-  end
+200.times do
+  Article.create(title: Faker::Lorem.words(rand(1..3)).join(" ").capitalize,
+                 description: Faker::Lorem.sentence(rand(1..3)),
+                 body: Faker::Lorem.paragraphs(6).join(" "))
+end
 
-  Article.all.each do |a|
-    offset = rand(Category.count)
-    Category.offset(offset).first.articles << a
-  end
+Article.all.each do |a|
+  offset = rand(Category.count)
+  Category.offset(offset).first.articles << a
 end
