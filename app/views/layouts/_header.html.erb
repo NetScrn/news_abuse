@@ -29,7 +29,9 @@
             <p class="navbar-text"></p>
 
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <%= image_tag "avatar1", width: 35, heigth: 35, class: "pull-right user-img" %></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.username %>
+              <%= image_tag "avatar1.png", alt: "avatar", width: 35, heigth: 35, class: "pull-right user-img" %></a>
             <ul class="dropdown-menu">
               <li><%= link_to t(:settings), edit_user_registration_path %></li>
               <li role="separator" class="divider"></li>
