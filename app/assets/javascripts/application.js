@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require redactor-rails
-//= require redactor-rails/plugins
+//= require redactor-rails.js
+//= require redactor-rails/plugins.js
 //= require turbolinks
 //= require react
 //= require react_ujs
