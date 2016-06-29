@@ -1,0 +1,9 @@
+<% if article.errors[attribute].any? %>
+  <div class='error_messages'>
+    <ul>
+      <% article.errors[attribute].each do |message, m| %>
+        <li><%= t("activerecord.attributes.article.#{attribute}") + ": " + message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

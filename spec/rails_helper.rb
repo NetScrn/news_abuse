@@ -71,9 +71,9 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # tests support only :en localization
-  config.before { I18n.locale = :en }
+  config.before(:each) { I18n.locale = :en }
 
-  # Add convenience way to use FactgoryGirl
+  # Add convenience way to use FactoryGirl
   config.include FactoryGirl::Syntax::Methods
 
   # Devise helpers

@@ -84,6 +84,9 @@
   width: 90%;
 
   #categories {
+    h3 {
+      font-size: 1.2em;
+    }
     select {
       margin-bottom: 20px;
     }
@@ -97,4 +100,7 @@
   @extend .btn-primary;
   @extend .btn-sm;
   width: 20%;
+  &:last-child {
+    margin-bottom: 0px;
+  }
 }

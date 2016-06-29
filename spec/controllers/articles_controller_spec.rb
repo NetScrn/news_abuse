@@ -4,43 +4,50 @@ RSpec.describe ArticlesController do
 
   shared_examples 'public access to articles' do
     describe 'GET #show' do
+      let(:article) { create(:article) }
+
       it 'assigns the requested article to @article' do
-        article = create(:article)
         get :show, id: article
         expect(assigns(:article)).to eq article
       end
 
       it 'renders the show template' do
-        article = create(:article)
         get :show, id: article
         expect(response).to render_template :show
       end
     end
   end
 
+
   shared_examples 'full access to articles' do
+    let(:user) { create(:user) }
+    let(:article) { create(:article, author: user) }
+    let!(:category) { create(:category) }
+
     before(:each) do
-      sign_in create(:user)
+      sign_in user
     end
 
     describe 'POST #create' do
       context 'with valid attributes' do
         it 'save the new article in the database' do
           expect{
-            post :create, article: attributes_for(:article)
+            post :create, article: attributes_for(:article),
+              categories: {"category 1" => "#{category.id}"}
           }.to change(Article, :count).by(1)
         end
 
         it 'redirect to article#show' do
-          post :create, article: attributes_for(:article)
+          post :create, article: attributes_for(:article),
+            categories: {"category 1" => "#{category.id}"}
           expect(response).to redirect_to article_path(assigns(:article))
         end
 
         it 'articles created with information about the user who created it' do
-          user = create(:user)
           sign_in user
 
-          post :create, article: attributes_for(:article, title: "Hallo User")
+          post :create, article: attributes_for(:article, title: "Hallo User"),
+            categories: {"category 1" => "#{category.id}"}
           article = Article.find_by(title: "Hallo User")
           expect(article.author).to eq user
         end
@@ -61,59 +68,53 @@ RSpec.describe ArticlesController do
     end
 
     describe 'PUTCH #update' do
-      before(:each) do
-        @article = create(:article, title: "Hello World")
-      end
+      let!(:category) { create(:category) }
 
       context 'valid attributes' do
         it 'locates requested article' do
-          patch :update, id: @article, article: attributes_for(:article)
-          expect(assigns(:article)).to eq(@article)
+          patch :update, id: article, article: attributes_for(:article)
+          expect(assigns(:article)).to eq(article)
         end
 
         it 'changes @article attributes' do
-          patch :update, id: @article, article: attributes_for(:article,
-            title: "Goodbuy world")
-          @article.reload
-          expect(@article.title).to eq("Goodbuy world")
+          patch :update, id: article, article: attributes_for(:article,
+            title: "Goodbuy world"), categories: {"category 1" => "#{category.id}"}
+          article.reload
+          expect(article.title).to eq("Goodbuy world")
         end
 
         it 'redirects to updated article' do
-          patch :update, id: @article, article: attributes_for(:article)
-          expect(response).to redirect_to @article
+          patch :update, id: article, article: attributes_for(:article),
+            categories: {"category 1" => "#{category.id}"}
+          expect(response).to redirect_to article
         end
       end
 
       context 'with invalid attributes' do
         it 'does not change article\'s attributes' do
-          patch :update, id: @article, article: attributes_for(:article,
-            title: nil,
-            description: "This is invalid description")
-          @article.reload
-          expect(@article.title).to eq("Hello World")
-          expect(@article.description).not_to eq "This is invalid description"
+          patch :update, id: article, article: attributes_for(:invalid_article)
+          article.reload
+          expect(article.title).to eq(article.title)
+          expect(article.description).not_to eq "This is invalid description"
         end
 
         it 're-renders edit template' do
-          patch :update, id: @article, article: attributes_for(:invalid_article)
+          patch :update, id: article, article: attributes_for(:invalid_article)
           expect(response).to render_template :edit
         end
       end
     end
 
     describe 'DELETE #destroy' do
-      before(:each) do
-        @article = create(:article)
-      end
-
+      let!(:article) { create(:article, author: user) }
       it 'deletes the article' do
         expect{
-          delete :destroy, id: @article
+          delete :destroy, id: article
         }.to change(Article, :count).by(-1)
       end
 
       it 'redirects to articles#index' do
-        delete :destroy, id: @article
+        delete :destroy, id: article
         expect(response).to redirect_to categories_url
       end
     end
@@ -153,5 +154,38 @@ RSpec.describe ArticlesController do
   describe 'user access to articles' do
     it_behaves_like 'public access to articles'
     it_behaves_like 'full access to articles'
+  end
+
+  describe 'not author access to articles' do
+    let!(:user) { create(:user) }
+    let!(:other_user) { create(:user) }
+    let!(:category) { create(:category) }
+    let(:article) { create(:article, author: user) }
+
+    before(:each) do
+      sign_in other_user
+    end
+
+    describe '#GET edit' do
+      it 'redirects to root url' do
+        get :edit, id: article
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    describe '#PUTCH update' do
+      it 'redirects to root url' do
+        patch :edit, id: article, article: attributes_for(:article),
+          categories: {"category 1" => "#{category.id}"}
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    describe '#DELETE destroy' do
+      it 'redirects to root url' do
+        delete :edit, id: article
+        expect(response).to redirect_to root_url
+      end
+    end
   end
 end

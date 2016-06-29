@@ -8,7 +8,7 @@
 
 <div class="actions">
   <ul>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user?(@article.author) %>
       <li><%= link_to t(:delete_article), @article, method: :delete, class: "btn btn-danger" %></li>
       <li><%= link_to t(:update_article), [:edit, @article], class: "btn btn-primary" %></li>
     <% end %>

@@ -3,6 +3,7 @@ FactoryGirl.define do
     title "RoR Tutorial"
     description "Really good RoR tutorial bla bla bla"
     body { Faker::Lorem.paragraphs(6).join(" ") }
+    categories [Category.create(name: "OpaOpa OPa")]
 
     factory :invalid_article do
       title nil

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, except: [:new, :create]
   before_action :set_categories, only: [:new, :create, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @article = Article.new
@@ -25,6 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    build_categories_for(@article)
     if @article.update(article_params)
       flash[:success] = t(:article_updated)
       redirect_to @article
@@ -46,6 +48,13 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :description, :body)
     end
 
+    def build_categories_for(article)
+      ids = params.fetch(:categories, []).reject {|k,v| v == ""}.map {|k,v| v.to_i}
+      article.category_ids = ids if ids.any?
+    end
+
+
+    # BEFORE ACTIONS
     def set_article
       @article = Article.find(params[:id])
     end
@@ -54,7 +63,8 @@ class ArticlesController < ApplicationController
       @categories = Category.all
     end
 
-    def build_categories_for(article)
-      article.category_ids = params.fetch(:categories, []).map {|k,v| v.to_i}
+    def correct_user
+      @article = current_user.articles.find_by(id: params[:id])
+      redirect_to root_url if @article.nil?
     end
 end

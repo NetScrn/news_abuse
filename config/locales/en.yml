@@ -34,3 +34,23 @@ en:
   home_path: "Home"
   user_login: "Login"
   published: "Published"
+
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+      article:
+        one: Article
+        other: Articles
+      category:
+        one: Category
+        other: Categories
+    attributes:
+      article:
+        title: Title
+        description: Description
+        body: Body
+        categories: Categories
+      category:
+        name: Name

@@ -37,6 +37,7 @@ ru:
         title: Название
         description: Описание
         body: Содержание
+        categories: Категории
       category:
         name: Имя
     errors:
@@ -53,6 +54,8 @@ ru:
               too_short:
                 one: "недостаточно символов (минимальная длинна 1)"
                 other: "Недостаточно символов (минимальная длинна %{count})"
+            categories:
+              blank: "должна быть указана хотя бы одна"
     messages:
         record_invalid: 'Возникли ошибки: %{errors}'
         restrict_dependent_destroy:
