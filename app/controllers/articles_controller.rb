@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     end
 
     def set_categories
-      @categories = Category.all
+      @categories = Category.allz
     end
 
     def correct_user

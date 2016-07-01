@@ -34,5 +34,15 @@ module NewsAbuse
        request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    ActiveSupport.halt_callback_chains_on_return_false = false
+
+    config.action_controller.per_form_csrf_tokens = true
+    config.action_controller.forgery_protection_origin_check = true
+    config.action_mailer.deliver_later_queue_name = :new_queue_name
+    config.action_mailer.perform_caching = true
+    config.active_record.dump_schemas = :all
+    config.ssl_options = { hsts: { subdomains: true } }
+    ActiveSupport.to_time_preserves_timezone = false
   end
 end
