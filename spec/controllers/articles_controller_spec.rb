@@ -7,12 +7,12 @@ RSpec.describe ArticlesController do
       let(:article) { create(:article) }
 
       it 'assigns the requested article to @article' do
-        get :show, id: article
+        get :show, params: {id: article}
         expect(assigns(:article)).to eq article
       end
 
       it 'renders the show template' do
-        get :show, id: article
+        get :show, params: {id: article}
         expect(response).to render_template :show
       end
     end
@@ -32,22 +32,22 @@ RSpec.describe ArticlesController do
       context 'with valid attributes' do
         it 'save the new article in the database' do
           expect{
-            post :create, article: attributes_for(:article),
-              categories: {"category 1" => "#{category.id}"}
+            post :create, params: { article: attributes_for(:article),
+              categories: {"category 1" => "#{category.id}"} }
           }.to change(Article, :count).by(1)
         end
 
         it 'redirect to article#show' do
-          post :create, article: attributes_for(:article),
-            categories: {"category 1" => "#{category.id}"}
+          post :create, params: { article: attributes_for(:article),
+            categories: {"category 1" => "#{category.id}"}}
           expect(response).to redirect_to article_path(assigns(:article))
         end
 
         it 'articles created with information about the user who created it' do
           sign_in user
 
-          post :create, article: attributes_for(:article, title: "Hallo User"),
-            categories: {"category 1" => "#{category.id}"}
+          post :create, params: { article: attributes_for(:article, title: "Hallo User"),
+            categories: {"category 1" => "#{category.id}"}}
           article = Article.find_by(title: "Hallo User")
           expect(article.author).to eq user
         end
@@ -56,12 +56,12 @@ RSpec.describe ArticlesController do
       context 'with invalid attributes' do
         it 'does not save the new article in the database' do
           expect{
-            post :create, article: attributes_for(:invalid_article)
+            post :create, params: {article: attributes_for(:invalid_article)}
           }.to_not change(Article, :count)
         end
 
         it 're-renders the :new template' do
-          post :create, article: attributes_for(:invalid_article)
+          post :create, params: {article: attributes_for(:invalid_article)}
           expect(response).to render_template :new
         end
       end
@@ -72,34 +72,34 @@ RSpec.describe ArticlesController do
 
       context 'valid attributes' do
         it 'locates requested article' do
-          patch :update, id: article, article: attributes_for(:article)
+          patch :update, params: { id: article, article: attributes_for(:article) }
           expect(assigns(:article)).to eq(article)
         end
 
         it 'changes @article attributes' do
-          patch :update, id: article, article: attributes_for(:article,
-            title: "Goodbuy world"), categories: {"category 1" => "#{category.id}"}
+          patch :update, params: { id: article, article: attributes_for(:article,
+            title: "Goodbuy world"), categories: {"category 1" => "#{category.id}"}}
           article.reload
           expect(article.title).to eq("Goodbuy world")
         end
 
         it 'redirects to updated article' do
-          patch :update, id: article, article: attributes_for(:article),
-            categories: {"category 1" => "#{category.id}"}
+          patch :update, params: {id: article, article: attributes_for(:article),
+            categories: {"category 1" => "#{category.id}"}}
           expect(response).to redirect_to article
         end
       end
 
       context 'with invalid attributes' do
         it 'does not change article\'s attributes' do
-          patch :update, id: article, article: attributes_for(:invalid_article)
+          patch :update, params: {id: article, article: attributes_for(:invalid_article)}
           article.reload
           expect(article.title).to eq(article.title)
           expect(article.description).not_to eq "This is invalid description"
         end
 
         it 're-renders edit template' do
-          patch :update, id: article, article: attributes_for(:invalid_article)
+          patch :update, params: {id: article, article: attributes_for(:invalid_article)}
           expect(response).to render_template :edit
         end
       end
@@ -109,12 +109,12 @@ RSpec.describe ArticlesController do
       let!(:article) { create(:article, author: user) }
       it 'deletes the article' do
         expect{
-          delete :destroy, id: article
+          delete :destroy, params: { id: article }
         }.to change(Article, :count).by(-1)
       end
 
       it 'redirects to articles#index' do
-        delete :destroy, id: article
+        delete :destroy, params: { id: article }
         expect(response).to redirect_to categories_url
       end
     end
@@ -135,17 +135,17 @@ RSpec.describe ArticlesController do
       end
 
       it 'GET #edit' do
-        get :edit, id: create(:article)
+        get :edit, params: { id: create(:article) }
         expect(response).to require_login
       end
 
       it 'PATCH #update' do
-        patch :update, id: create(:article)
+        patch :update, params: { id: create(:article) }
         expect(response).to require_login
       end
 
       it 'DELETE #destroy' do
-        delete :destroy, id: create(:article)
+        delete :destroy, params: { id: create(:article) }
         expect(response).to require_login
       end
     end
@@ -168,22 +168,22 @@ RSpec.describe ArticlesController do
 
     describe '#GET edit' do
       it 'redirects to root url' do
-        get :edit, id: article
+        get :edit, params: { id: article }
         expect(response).to redirect_to root_url
       end
     end
 
     describe '#PUTCH update' do
       it 'redirects to root url' do
-        patch :edit, id: article, article: attributes_for(:article),
-          categories: {"category 1" => "#{category.id}"}
+        patch :edit, params: { id: article, article: attributes_for(:article),
+          categories: {"category 1" => "#{category.id}"}}
         expect(response).to redirect_to root_url
       end
     end
 
     describe '#DELETE destroy' do
       it 'redirects to root url' do
-        delete :edit, id: article
+        delete :edit, params: { id: article }
         expect(response).to redirect_to root_url
       end
     end

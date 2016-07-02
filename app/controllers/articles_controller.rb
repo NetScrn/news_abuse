@@ -49,8 +49,9 @@ class ArticlesController < ApplicationController
     end
 
     def build_categories_for(article)
-      ids = params.fetch(:categories, []).reject {|k,v| v == ""}.map {|k,v| v.to_i}
-      article.category_ids = ids if ids.any?
+      cats = []
+      params.require(:categories).select {|_,v| v != ""}.each {|_,v| cats << v.to_i} if params[:categories]
+      article.category_ids = cats if !cats.empty?
     end
 
 
@@ -60,7 +61,7 @@ class ArticlesController < ApplicationController
     end
 
     def set_categories
-      @categories = Category.allz
+      @categories = Category.all
     end
 
     def correct_user

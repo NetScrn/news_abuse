@@ -77,7 +77,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Devise helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
   config.include Warden::Test::Helpers, type: :feature
   config.after(type: :feature) { Warden.test_reset! }
-  config.include Devise::TestHelpers, type: :controller
 end

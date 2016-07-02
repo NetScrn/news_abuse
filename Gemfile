@@ -11,7 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'redactor-rails'
 gem 'pg'
-gem 'devise'
+gem 'devise', '~> 4.2'
 gem "carrierwave"
 gem "mini_magick"
 gem "simple_form"
@@ -21,7 +21,7 @@ gem 'faker'
 
 group :development, :test do
   gem 'byebug'
-  gem "rspec-rails", "3.5.0.beta1"
+  gem "rspec-rails", "3.5"
   gem 'factory_girl_rails'
 end
 
