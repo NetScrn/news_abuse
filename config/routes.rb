@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     root to: redirect("/ru/home")
     get "/home" => "static#home"
 
-    resources :articles, except: [:index]
+    resources :articles, except: [:index] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :categories, only: [:new, :index, :show]
   end
 end

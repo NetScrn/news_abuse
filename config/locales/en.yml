@@ -34,6 +34,8 @@ en:
   home_path: "Home"
   user_login: "Login"
   published: "Published"
+  guest: "Guest"
+
 
   activerecord:
     models:

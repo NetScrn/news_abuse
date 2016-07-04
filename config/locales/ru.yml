@@ -13,6 +13,7 @@ ru:
   home_path: "Главная"
   user_login: "Логин"
   published: "Опубликовано"
+  guest: "Гость"
 
   will_paginate:
     previous_label: "&#8592; Назад"

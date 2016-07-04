@@ -57,6 +57,10 @@
 .article-main {
   padding: 20px;
 
+  article {
+    padding-left: 0px;
+  }
+
   aside {
     .panel-title{
       font-size: 1.2em;
@@ -76,6 +80,34 @@
     }
   }
 }
+
+
+// COMMENTS
+
+.comments-container {
+  padding-top: 15px;
+  border-top: solid 1px #bbbbbb;
+  h3 {
+    @extend .text-center;
+    margin: 0 0 10px 0;
+  }
+
+  .media {
+    img {
+      border-radius: 50%
+    }
+    padding: 3px;
+    &:hover {
+      background-color: #e8e8e8;
+    }
+  }
+
+  #new_comment {
+    margin-top: 15px;
+  }
+}
+
+
 // FORM
 
 .article-form {

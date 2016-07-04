@@ -1,0 +1,5 @@
+<%= simple_form_for [article, Comment.new] do |f| %>
+  <%= f.input :content %>
+
+  <%= f.submit t(:create_comment), class: "btn btn-success btn-sm" %>
+<% end %>

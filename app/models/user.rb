@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validate :validate_username
 
   has_many :articles, foreign_key: "author_id"
+  has_many :comments, dependent: :destroy, foreign_key: "author_id"
 
 
   def self.find_for_database_authentication(warden_conditions)

@@ -1,0 +1,5 @@
+ru:
+  comments: "Комментарии"
+  comment_created: "Комментарий создан"
+  comment_not_created: "Комментарий не был создан (минимум 10 символов)"
+  create_comment: "Создать Комментарий"

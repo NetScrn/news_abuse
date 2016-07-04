@@ -1,0 +1,5 @@
+en:
+  comments: "Comments"
+  comment_created: "Comment has been created"
+  comment_not_created: "Comment has not been created (minimum 10 symbold)"
+  create_comment: "Create Comment"

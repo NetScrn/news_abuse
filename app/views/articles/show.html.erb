@@ -1,4 +1,4 @@
-
+<!-- ARTICLE -->
 <h2 class="article-title"><%= @article.title %></h2>
 <div class="category-tags">
   <% @article.categories.each do |category| %>
@@ -24,7 +24,7 @@
 
   <aside class="col-md-3 col-lg-3 visible-md visible-lg other-articles">
     <div class="panel panel-info">
-      <div class="panel-heading"> <h3 class="panel-title"><%= t(:other_articles) %></h3></div>
+      <div class="panel-heading"> <h4 class="panel-title"><%= t(:other_articles) %></h3></div>
       <div class="panel-body">
         <ul>
           <li>!!!!!!!!!!!!!!</li>
@@ -34,3 +34,14 @@
     </div>
   </aside>
 </div>
+
+<!-- COMMENTS -->
+<section class="comments-container">
+  <h3><%= t(:comments) %> (<%= @comments.count %>)</h3>
+  <% if @comments %>
+    <div id="comments">
+      <%= render @comments %>
+    </div>
+  <% end %>
+  <%= render "comments/form", article: @article %>
+</section>
