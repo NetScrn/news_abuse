@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     get "/home" => "static#home"
 
     resources :articles, except: [:index] do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy] do
+        member do
+          get :subcomment
+          post :subcomment, action: :create_subcomment
+        end
+      end
     end
     resources :categories, only: [:new, :index, :show]
   end

@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Users can create article' do
   let!(:category) { create(:category) }
   let!(:other_category) { create(:category, name: "Medicine") }
-
+  let(:user) { create(:user) }
   before(:each) do
-    login_as create(:user)
+    login_as user
     visit categories_path("en")
     click_link "New Article"
   end
@@ -34,11 +34,12 @@ RSpec.describe 'Users can create article' do
     expect(page).to have_content category.name
     expect(page).to have_content other_category.name
     expect(page).to have_content body
+    expect(page).to have_content "Published by: #{user.username}"
   end
 
   it 'should does not create invalid article', js: true do
     click_link "Add Another Category"
-    
+
     click_button "Create Article"
 
     expect(page).to have_content "Article has been not created."

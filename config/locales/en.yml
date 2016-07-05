@@ -35,6 +35,13 @@ en:
   user_login: "Login"
   published: "Published"
   guest: "Guest"
+  published_by: "Published by:"
+  reply: "Reply"
+  replied_to: "Replied to"
+  ago: "ago"
+
+
+
 
 
   activerecord:
@@ -56,3 +63,5 @@ en:
         categories: Categories
       category:
         name: Name
+      comment:
+        content: Content

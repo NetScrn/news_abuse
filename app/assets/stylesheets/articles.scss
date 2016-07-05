@@ -49,9 +49,15 @@
   }
 }
 
+.author {
+  color: #677188;
+  font-style: italic;
+}
+
 .article-title {
   font-size: 3em !important;
   text-align: left !important;
+  margin: 0 !important;
 }
 
 .article-main {
@@ -93,12 +99,34 @@
   }
 
   .media {
+    padding-left: 2px;
     img {
-      border-radius: 50%
+      border-radius: 50%;
     }
-    padding: 3px;
-    &:hover {
-      background-color: #e8e8e8;
+    .media-heading {
+      font-size: 1.4em;
+    }
+    .text-right {
+      margin: 10px;
+      a {
+        margin-left: 10px;
+        @extend .btn;
+        @extend .btn-xs;
+        @extend .btn-default;
+        font-size: 0.9em !important;
+      }
+    }
+    .subcomment {
+      border-left: 2px solid #77b5f6;
+    }
+    .published-at {
+      display: inline-block;
+    }
+    small {
+      margin-left: 10px;
+      span {
+        color: #3f4dec;
+      }
     }
   }
 

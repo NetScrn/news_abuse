@@ -13,6 +13,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  def subcomment
+    @comment = Comment.find(params[:id])
+    render layout: false
+  end
+
+  def create_subcomment
+    @comment = Comment.find(params[:id])
+    @subcomment = @comment.subcomments.build(comment_params)
+    @subcomment.article = @article
+    @subcomment.author = current_user if current_user
+    if @subcomment.save
+      redirect_to @article, notice: t(:comment_created)
+    else
+      flash[:danger] = t(:comment_not_created)
+      redirect_to @article
+    end
+  end
+
   private
 
     def comment_params

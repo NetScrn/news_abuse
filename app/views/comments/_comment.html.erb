@@ -1,11 +1,30 @@
-<div class="media">
+<div class="media" id="comment-<%= comment.id %>">
   <div class="media-left">
     <a href="#">
       <%= image_tag "avatar1.png", class: "media-object", size: "64x64" %>
     </a>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"><%= comment.author ? comment.author.username : t(:guest) %></h4>
-    <%= comment.content %>
+    <h4 class="media-heading"><%= comment.author ? comment.author.username : t(:guest) %>
+      <% if comment.parent_comment %>
+        <% if comment.parent_comment.author %>
+          <small><%= t(:replied_to) %> <span><%= comment.parent_comment.author.username %></span></small>
+        <% else %>
+          <small><%=t(:replied_to)%> <span><%= t(:guest) %></span></small>
+        <% end %>
+      <% end %>
+    </h4>
+    <p><%= comment.content %></p>
+    <div class="text-right">
+      <div class="published-at text-left">
+        <%= "#{t(:published)} #{time_ago_in_words(comment.created_at)} #{t(:ago)}" %>
+      </div>
+      <%= link_to t(:reply), [:subcomment, article, comment],
+        remote: true, class: "reply", id: "reply-#{comment.id}", data: {params: {id: comment.id}} %>
+    </div>
+
+    <div class="subcomment">
+      <%= render comment.subcomments, article: @article %>
+    </div>
   </div>
 </div>

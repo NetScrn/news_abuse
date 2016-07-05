@@ -1,5 +1,5 @@
-<%= simple_form_for [article, Comment.new] do |f| %>
-  <%= f.input :content %>
+<%= simple_form_for [article, comment] do |f| %>
+  <%= f.input :content, label: t("activerecord.attributes.comment.content") %>
 
   <%= f.submit t(:create_comment), class: "btn btn-success btn-sm" %>
 <% end %>

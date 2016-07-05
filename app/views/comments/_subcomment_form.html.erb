@@ -1,0 +1,5 @@
+<%= simple_form_for Comment.new, url: subcomment_article_comment_path(article, comment) do |f| %>
+  <%= f.input :content, label: t("activerecord.attributes.comment.content"), input_html: { id: "comment-content#{comment.id}" } %>
+
+  <%= f.submit t(:create_comment), class: "btn btn-success btn-sm" %>
+<% end %>

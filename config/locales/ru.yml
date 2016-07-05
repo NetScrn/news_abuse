@@ -14,6 +14,10 @@ ru:
   user_login: "Логин"
   published: "Опубликовано"
   guest: "Гость"
+  published_by: "Автор статьи:"
+  reply: "Ответить"
+  replied_to: "Ответ для"
+  ago: "назад"
 
   will_paginate:
     previous_label: "&#8592; Назад"
@@ -41,6 +45,8 @@ ru:
         categories: Категории
       category:
         name: Имя
+      comment:
+        content: Комментарий
     errors:
       models:
         article:
