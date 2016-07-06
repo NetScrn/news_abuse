@@ -3,3 +3,5 @@ ru:
   comment_created: "Комментарий создан"
   comment_not_created: "Комментарий не был создан (минимум 10 символов)"
   create_comment: "Создать Комментарий"
+  comment_deleted: "Комментарий удален"
+  dont_allow_delete_comment: "Вы не можете удалить комментарий"

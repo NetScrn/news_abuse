@@ -21,6 +21,10 @@
       </div>
       <%= link_to t(:reply), [:subcomment, article, comment],
         remote: true, class: "reply", id: "reply-#{comment.id}", data: {params: {id: comment.id}} %>
+      <% unless article.author != current_user && current_user != comment.author %>
+        <%= link_to t(:delete), [article, comment], method: :delete,
+          class: "delete", id: "delete-#{comment.id}" %>
+      <% end %>
     </div>
 
     <div class="subcomment">

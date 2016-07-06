@@ -112,8 +112,13 @@
         margin-left: 10px;
         @extend .btn;
         @extend .btn-xs;
-        @extend .btn-default;
         font-size: 0.9em !important;
+      }
+      .reply {
+        @extend .btn-default;
+      }
+      .delete {
+        @extend .btn-danger;
       }
     }
     .subcomment {

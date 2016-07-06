@@ -31,8 +31,10 @@ RSpec.describe 'Users can create article' do
 
     expect(page).to have_content "Article has been successfuly created."
     expect(page).to have_content "Ruby on Rails is awesome!"
-    expect(page).to have_content category.name
-    expect(page).to have_content other_category.name
+    within ".category-tags" do
+      expect(page).to have_content category.name
+      expect(page).to have_content other_category.name
+    end
     expect(page).to have_content body
     expect(page).to have_content "Published by: #{user.username}"
   end

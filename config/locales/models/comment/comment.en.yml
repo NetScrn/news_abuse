@@ -3,3 +3,5 @@ en:
   comment_created: "Comment has been created"
   comment_not_created: "Comment has not been created (minimum 10 symbold)"
   create_comment: "Create Comment"
+  comment_deleted: "Comment has been deleted"
+  dont_allow_delete_comment: "You can not delete a comment"

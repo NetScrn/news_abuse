@@ -18,6 +18,7 @@ ru:
   reply: "Ответить"
   replied_to: "Ответ для"
   ago: "назад"
+  delete: "Удалить"
 
   will_paginate:
     previous_label: "&#8592; Назад"
