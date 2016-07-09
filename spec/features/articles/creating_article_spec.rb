@@ -5,7 +5,7 @@ RSpec.describe 'Users can create article' do
   let!(:other_category) { create(:category, name: "Medicine") }
   let(:user) { create(:user) }
   before(:each) do
-    login_as user
+    sign_in user
     visit categories_path("en")
     click_link "New Article"
   end

@@ -18,6 +18,7 @@ gem "simple_form"
 gem 'react-rails', '~> 1.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'faker'
+gem 'activeadmin', '~> 1.0.0.pre4'
 
 group :development, :test do
   gem 'byebug'

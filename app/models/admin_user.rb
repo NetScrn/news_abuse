@@ -1,7 +1,7 @@
-class User < ActiveRecord::Base
+class AdminUser < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
   }
 
   validate :validate_username
-
-  has_many :articles, foreign_key: "author_id", dependent: :destroy
-  has_many :comments, dependent: :destroy, foreign_key: "author_id"
-
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
