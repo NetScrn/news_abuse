@@ -4,6 +4,10 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password 'password'
 
+    trait :admin do
+      admin true
+    end
+
     factory :user_with_articles do
       transient do
         articles_count 5
