@@ -6,7 +6,8 @@ Category.destroy_all
 Article.destroy_all
 User.destroy_all
 
-User.create(username: "admin", email: "viewer@ticketee.com", password: "password")
+User.create(username: "admin", email: "viewer@ticketee.com", password: "password",
+  confirmed_at: Time.now)
 
 ["Спорт", "Политика", "Технологии",
   "Музыка", "Мир", "Архитектура",

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :articles, foreign_key: "author_id"
   has_many :comments, dependent: :destroy, foreign_key: "author_id"
 
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

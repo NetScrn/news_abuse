@@ -3,6 +3,7 @@ FactoryGirl.define do
     username { Faker::Name.first_name}
     email { Faker::Internet.email }
     password 'password'
+    confirmed_at { Time.now }
 
     factory :user_with_articles do
       transient do
