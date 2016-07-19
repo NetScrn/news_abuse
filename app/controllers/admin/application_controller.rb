@@ -3,9 +3,8 @@ class Admin::ApplicationController < ApplicationController
   before_action :authorize_admin
 
   def index
-    @users = User.last(5)
-    @articles = Article.last(5)
-    @comments = Comment.last(5)
+    @users = User.order(created_at: :desc).limit(5)
+    @articles = Article.order(created_at: :desc).limit(5)
   end
 
   private
@@ -14,7 +13,7 @@ class Admin::ApplicationController < ApplicationController
       authenticate_user!
 
       unless current_user.admin?
-        redirect_to root_path, alert: "You must be an admin to do that."
+        redirect_to root_url, alert: "You must be an admin to do that."
       end
     end
 end

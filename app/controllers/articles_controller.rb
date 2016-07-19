@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
     end
 
     def build_categories_for(article)
-      ids = params.fetch(:categories, []).reject {|k,v| v == ""}.map {|k,v| v.to_i}
+      ids = params.fetch(:categories, []).reject {|k,v| v == ""}.map {|k,v| v.to_i}.uniq
       article.category_ids = ids if ids.any?
     end
 
