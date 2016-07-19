@@ -17,6 +17,7 @@
       <th>Username</th>
       <th>E-mail</th>
       <th>Admin</th>
+      <th>Confirmed</th>
       <th>Archived</th>
       <th>Edit</th>
       <th>Archive/Restore</th>
@@ -28,6 +29,7 @@
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= user.admin? %></td>
+        <td><%= user.confirmed? %></td>
         <td>#TODO</td>
         <td><%= link_to "Edit", admin_user_path(user), class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to "Archive", "#", class: "btn btn-danger btn-xs" %></td>

@@ -9,6 +9,8 @@ class Admin::UsersController < Admin::ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.created_at = Time.now
+    @user.skip_confirmation!
     if @user.save
       flash[:success] = "User has been created."
       redirect_to admin_users_url
