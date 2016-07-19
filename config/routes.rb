@@ -15,5 +15,11 @@ Rails.application.routes.draw do
       end
     end
     resources :categories, only: [:new, :index, :show]
+
+    namespace :admin do
+      root "application#index"
+
+      resources :users, except: [:edit, :destroy]
+    end
   end
 end

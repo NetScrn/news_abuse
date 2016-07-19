@@ -7,7 +7,9 @@ Article.destroy_all
 User.destroy_all
 
 User.create(username: "admin", email: "viewer@ticketee.com", password: "password",
-  confirmed_at: Time.now)
+            confirmed_at: Time.now, admin: true)
+User.create(username: "user", email: "user@news-abuse.com", password: "password",
+            confirmed_at: Time.now)
 
 ["Спорт", "Политика", "Технологии",
   "Музыка", "Мир", "Архитектура",

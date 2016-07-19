@@ -1,0 +1,64 @@
+<h2><%= t(:admin_section) %></h2>
+
+<div class="text-center">
+  <span class="label label-success admin-info">Registered Users: <%= User.count %> </span>
+  <span class="label label-success admin-info">Articles: <%= Article.count %></span>
+</div><br>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Recent Users</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="recent-users">
+          <% @users.each do |user| %>
+          <li class="miniuser"><%= user.username %> - <%= user.email %>
+            <a href="#" class="btn btn-danger btn-xs pull-right">Delete</a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Recent Articles</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @articles.each do |article| %>
+            <li>
+              <div class="recent-articles">
+                <a href="#" class="btn btn-danger btn-xs pull-right">Delete</a>
+                <h4>
+                  <%= article.title %> <small>By <em><%= article.author.username %></em>,
+                    <%= article.created_at %></small>
+                </h4>
+                <small id="desc"><%= article.description %></small>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Admin links</h3>
+      </div>
+      <div class="panel-body">
+        <nav class="admin-nav">
+          <ul>
+            <li><a href="#"><div><%= link_to "Users", admin_users_path %></div></a></li>
+            <li><a href="#"><div>Articles</div></a></li>
+            <li><a href="#"><div>Categories</div></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<h2><%= "#{@user.username} - #{@user.email}" %></h2>
+
+<div class="row">
+  <p class="col-xs-3">Username:</p>
+  <p class="col-xs-3"><%= @user.username %></p>
+</div>
+<div class="row">
+  <p class="col-xs-3">E-mail:</p>
+  <p class="col-xs-3"><%= @user.email %></p>
+</div>
+<div class="row">
+  <p class="col-xs-3">Admin:</p>
+  <p class="col-xs-3"><%= @user.admin? %></p>
+</div>
+<div class="row">
+  <p class="col-xs-3">Created At:</p>
+  <p class="col-xs-3"><%= @user.created_at %></p>
+</div>
+<div class="row">
+  <p class="col-xs-3">Updated At:</p>
+  <p class="col-xs-3"><%= @user.updated_at %></p>
+</div>
+<div class="row">
+  <p class="col-xs-3">Archived:</p>
+  <p class="col-xs-3"><%= "# todo" %></p>
+</div>
+
+<h3 class="text-center">Edit User</h3>
+
+<%= render "form", user: @user %>

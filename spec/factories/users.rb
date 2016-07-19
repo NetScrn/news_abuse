@@ -5,6 +5,10 @@ FactoryGirl.define do
     password 'password'
     confirmed_at { Time.now }
 
+    trait :admin do
+      admin true
+    end
+
     factory :user_with_articles do
       transient do
         articles_count 5

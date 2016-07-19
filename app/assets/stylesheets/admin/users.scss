@@ -1,0 +1,27 @@
+// Place all the styles related to the admin/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.action-bar {
+  margin-bottom: 10px;
+  a {
+    margin-right: 10px;
+  }
+  form {
+    display: inline-block;
+  }
+}
+
+// FORM
+
+.admin_new_user {
+  .form-control {
+    width: 500px;
+  }
+
+  .user-errors {
+    padding: 10px 0;
+    color: #c72323;
+  }
+}

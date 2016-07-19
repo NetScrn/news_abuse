@@ -1,0 +1,55 @@
+// Place all the styles related to the admin/application controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.admin-info {
+  font-size: 1.0em;
+  margin-left: 5px;
+}
+
+.miniuser {
+  margin-bottom: 5px;
+  a {
+    margin-right: 10px;
+  }
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.admin-nav {
+  li {
+    padding: 2px;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+    a {
+      font-size: 1.3em;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}
+
+.panel-body {
+  h4 {
+    margin: 0;
+  }
+
+  li {
+    &:hover {
+      background-color: #e8e5e5;
+    }
+  }
+
+  .recent-articles {
+    margin-bottom: 15px;
+
+    a {
+      margin: 10px 10px;
+    }
+  }
+}

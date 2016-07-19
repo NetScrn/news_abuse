@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users can only see appropriate elements' do
   let!(:user)    { create(:user) }
+  let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
   let!(:article) { create(:article, author: user) }
 
@@ -37,6 +38,17 @@ RSpec.describe 'Users can only see appropriate elements' do
       visit article_path("en", article)
       expect(page).to have_link "Update Article"
       expect(page).to have_link "Delete Article"
+    end
+  end
+
+  describe 'admin visible elements' do
+    before(:each) do
+      login_as admin_user
+      visit root_path
+    end
+
+    it 'should be visible admin section link' do
+      expect(page).to have_link "Admin"
     end
   end
 end
