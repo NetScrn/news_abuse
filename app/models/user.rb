@@ -17,6 +17,16 @@ class User < ActiveRecord::Base
   has_many :articles, foreign_key: "author_id"
   has_many :comments, dependent: :destroy, foreign_key: "author_id"
 
+  scope :excluding_archived, lambda { where(archived_at: nil) }
+
+
+  def active_for_authentication?
+    super && archived_at.nil?
+  end
+
+  def inactive_message
+    archived_at.nil? ? super : :archived
+  end
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
@@ -36,5 +46,13 @@ class User < ActiveRecord::Base
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  def archive
+    self.update(archived_at: Time.now)
+  end
+
+  def archived?
+    !!archived_at 
   end
 end

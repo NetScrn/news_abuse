@@ -42,6 +42,14 @@ class Admin::UsersController < Admin::ApplicationController
 
   def archive
     @user = User.find(params[:id])
+    if @user == current_user
+      flash[:danger] = "You cannot archive youself!"
+      redirect_to :back
+    else
+      @user.archive
+      flash[:notice] = "User has been archived"
+      redirect_to admin_users_url
+    end
   end
 
   private

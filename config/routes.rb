@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     namespace :admin do
       root "application#index"
 
-      resources :users, except: [:edit, :destroy]
+      resources :users, except: [:edit, :destroy] do
+        member do
+          patch :archive
+        end
+      end
     end
   end
 end

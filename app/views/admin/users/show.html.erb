@@ -28,9 +28,12 @@
   <p class="col-xs-3"><%= @user.updated_at %></p>
 </div>
 <div class="row">
-  <p class="col-xs-3">Archived:</p>
-  <p class="col-xs-3"><%= "# todo" %></p>
+  <p class="col-xs-3">Archived At:</p>
+  <p class="col-xs-3"><%= @user.archived_at || "Not Archived" %></p>
 </div>
+
+<%= link_to "Archive User", [:archive, :admin, @user],
+  class: "btn btn-danger", method: :patch if @user.archived_at.nil? %>
 
 <h3 class="text-center">Edit User</h3>
 

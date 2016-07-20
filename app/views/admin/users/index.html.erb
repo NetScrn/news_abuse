@@ -30,7 +30,7 @@
         <td><%= user.email %></td>
         <td><%= user.admin? %></td>
         <td><%= user.confirmed? %></td>
-        <td>#TODO</td>
+        <td><%= user.archived? %></td>
         <td><%= link_to "Edit", admin_user_path(user), class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to "Archive", "#", class: "btn btn-danger btn-xs" %></td>
       </tr>
