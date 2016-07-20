@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
   end
 
   def archived?
-    !!archived_at 
+    !!archived_at
+  end
+
+  def restore
+    self.update(archived_at: nil)
   end
 end

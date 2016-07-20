@@ -9,6 +9,10 @@ FactoryGirl.define do
       admin true
     end
 
+    trait :archived do
+      archived_at { Time.now }
+    end
+
     factory :user_with_articles do
       transient do
         articles_count 5

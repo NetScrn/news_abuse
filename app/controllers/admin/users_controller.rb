@@ -1,6 +1,10 @@
 class Admin::UsersController < Admin::ApplicationController
+  before_action :set_user, except: [:index, :new, :create]
+
   def index
-    @users = User.all.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    @users = User.all
+                 .order(created_at: :desc)
+                 .paginate(page: params[:page], per_page: 40)
   end
 
   def new
@@ -21,7 +25,6 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def update
@@ -30,7 +33,6 @@ class Admin::UsersController < Admin::ApplicationController
       params[:user].delete(:password_confirmation)
     end
 
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "User has been updated."
       redirect_to admin_users_url
@@ -41,15 +43,20 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def archive
-    @user = User.find(params[:id])
     if @user == current_user
       flash[:danger] = "You cannot archive youself!"
-      redirect_to :back
     else
       @user.archive
       flash[:notice] = "User has been archived"
-      redirect_to admin_users_url
     end
+
+    redirect_to :back
+  end
+
+  def restore
+    @user.restore
+    flash[:notice] = "User has been restored"
+    redirect_to :back
   end
 
   private
@@ -57,5 +64,11 @@ class Admin::UsersController < Admin::ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :admin,
         :password_confirmation)
+    end
+
+    # BEFORE ACTIONS
+
+    def set_user
+      @user = User.find(params[:id])
     end
 end

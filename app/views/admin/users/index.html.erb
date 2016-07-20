@@ -32,7 +32,15 @@
         <td><%= user.confirmed? %></td>
         <td><%= user.archived? %></td>
         <td><%= link_to "Edit", admin_user_path(user), class: "btn btn-primary btn-xs" %></td>
-        <td><%= link_to "Archive", "#", class: "btn btn-danger btn-xs" %></td>
+        <td>
+          <% if user.archived? %>
+            <%= link_to "Restore User", [:restore, :admin, user],
+              class: "btn btn-danger btn-xs", method: :patch %>
+          <% else %>
+            <%= link_to "Archive User", [:archive, :admin, user],
+              class: "btn btn-danger btn-xs", method: :patch %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

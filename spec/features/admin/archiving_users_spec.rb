@@ -14,7 +14,7 @@ RSpec.feature "An admin can archive users" do
 
     expect(page).to have_content "User has been archived"
     visit admin_user_path("en", user)
-    expect(page).to have_content "Archived At: #{user.archived_at}"
+    expect(page).to have_content "Archived: #{user.archived_at}"
   end
 
   scenario "but cannot archive themselves" do

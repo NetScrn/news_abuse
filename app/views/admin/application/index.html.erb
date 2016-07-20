@@ -15,7 +15,8 @@
         <ul class="recent-users">
           <% @users.each do |user| %>
           <li class="miniuser"><%= user.username %> - <%= user.email %>
-            <a href="#" class="btn btn-danger btn-xs pull-right">Delete</a>
+            <%= link_to "Archive User", [:archive, :admin, user],
+              class: "btn btn-danger btn-xs pull-right", method: :patch %>
           </li>
           <% end %>
         </ul>

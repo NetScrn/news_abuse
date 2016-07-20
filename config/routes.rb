@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :users, except: [:edit, :destroy] do
         member do
           patch :archive
+          patch :restore
         end
       end
     end
