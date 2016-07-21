@@ -1,2 +1,32 @@
-<h1>Admin::Articles#index</h1>
-<p>Find me in app/views/admin/articles/index.html.erb</p>
+<h2>Articles Management</h2>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Categories</th>
+      <th>Confirmed</th>
+      <th>Created At</th>
+      <th>show</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><%= article.author.username %></td>
+        <td><%= article.categories.map {|cat| cat.name}.join(", <br>").html_safe %></td>
+        <td><%# TODO article.confirmed? %></td>
+        <td><%= article.created_at.strftime("%H:%M %d-%m-%y") %></td>
+        <td><%= link_to "Show", article, class: "btn btn-primary btn-xs" %></td>
+        <td><%= link_to "Destroy", article, method: :delete, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @articles %>

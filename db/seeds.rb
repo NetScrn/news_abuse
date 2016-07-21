@@ -22,6 +22,6 @@ end
   Article.create(title: Faker::Lorem.words(rand(1..3)).join(" ").capitalize,
                  description: Faker::Lorem.sentence(rand(1..3)),
                  body: Faker::Lorem.paragraphs(6).join(" "),
-                 categories: Category.all,
+                 categories: Category.all.sample(3),
                  author: User.first)
 end

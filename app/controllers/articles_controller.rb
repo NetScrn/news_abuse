@@ -40,7 +40,11 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     flash[:success] = t(:article_deleted)
-    redirect_to categories_url
+    if request.referrer.include? "admin/articles"
+      redirect_to :back
+    else
+      redirect_to categories_url
+    end
   end
 
   private

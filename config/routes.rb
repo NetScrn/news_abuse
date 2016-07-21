@@ -25,6 +25,8 @@ Rails.application.routes.draw do
           patch :restore
         end
       end
+
+      resources :articles, except: [:new, :create, :edit, :update]
     end
   end
 end
