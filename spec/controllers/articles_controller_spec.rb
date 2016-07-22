@@ -35,6 +35,7 @@ RSpec.describe ArticlesController do
             post :create, article: attributes_for(:article),
               categories: {"category 1" => "#{category.id}"}
           }.to change(Article, :count).by(1)
+          expect(Article.last.confirmed?).to be_falsey
         end
 
         it 'redirect to article#show' do
@@ -108,14 +109,22 @@ RSpec.describe ArticlesController do
     describe 'DELETE #destroy' do
       let!(:article) { create(:article, author: user) }
       it 'deletes the article' do
+        @request.env['HTTP_REFERER'] = 'http://test.com/'
         expect{
           delete :destroy, id: article
         }.to change(Article, :count).by(-1)
       end
 
       it 'redirects to articles#index' do
+        @request.env['HTTP_REFERER'] = 'http://test.com/'
         delete :destroy, id: article
         expect(response).to redirect_to categories_url
+      end
+
+      it 'redirects to admin/articles if requested from admon page' do
+        @request.env['HTTP_REFERER'] = 'http://test.host/ru/admin/articles'
+        delete :destroy, id: article
+        expect(response).to redirect_to admin_articles_url
       end
     end
   end

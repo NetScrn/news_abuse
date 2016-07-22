@@ -20,7 +20,16 @@
         <td><%= article.description %></td>
         <td><%= article.author.username %></td>
         <td><%= article.categories.map {|cat| cat.name}.join(", <br>").html_safe %></td>
-        <td><%# TODO article.confirmed? %></td>
+        <td>
+          <% unless article.confirmed? %>
+            <%= link_to "Confirm", [:confirm, :admin, article], method: :patch,
+                        class: "btn btn-success btn-xs" %>
+            <%= link_to "Reject", [:reject, :admin, article], method: :delete,
+                        class: "btn btn-danger btn-xs" %>
+          <% else %>
+            true
+          <% end %>
+        </td>
         <td><%= article.created_at.strftime("%H:%M %d-%m-%y") %></td>
         <td><%= link_to "Show", article, class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to "Destroy", article, method: :delete, class: "btn btn-danger btn-xs" %></td>

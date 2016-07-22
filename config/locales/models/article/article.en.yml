@@ -1,7 +1,7 @@
 en:
   articles: "Articles"
   all_articles: "All articles"
-  article_created: "Article has been successfuly created."
+  article_created: "Article has been successfuly created. It becomes available when an admin will check it."
   article_n_created: "Article has been not created."
   new_article: "New Article"
   update_article: "Update Article"

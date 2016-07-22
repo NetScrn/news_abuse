@@ -7,4 +7,20 @@ class Article < ActiveRecord::Base
   validates :title, length: {minimum: 5}
   validates :description, length: {minimum: 20}
   validates :body, length: {minimum: 200}
+
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
+
+  def confirm
+    self.update_attributes(confirmed_at: Time.now)
+    # TODO: add email notification about confirmation
+  end
+
+  def reject
+    destroy
+    # TODO add email notification about rejection
+  end
+
+  def confirmed?
+    !!confirmed_at
+  end
 end

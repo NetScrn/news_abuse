@@ -29,14 +29,14 @@ RSpec.describe 'Users can create article' do
 
     click_button "Create Article"
 
-    expect(page).to have_content "Article has been successfuly created."
+    expect(page).to have_content "Article has been successfuly created. It becomes available when an admin will check it."
     expect(page).to have_content "Ruby on Rails is awesome!"
     within ".category-tags" do
       expect(page).to have_content category.name
       expect(page).to have_content other_category.name
     end
     expect(page).to have_content body
-    expect(page).to have_content "Published by: #{user.username}"
+    expect(page).to have_content "#{user.username} - "
   end
 
   it 'should does not create invalid article', js: true do

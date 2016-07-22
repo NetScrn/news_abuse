@@ -4,7 +4,7 @@
       <h3 class="text-center"><%= category.name %></h3>
     <% end %>
     <ul>
-      <% category.articles.limit(3).each do |article| %>
+      <% category.articles.confirmed.limit(3).each do |article| %>
         <%= link_to article do %>
           <li>
             <h4><%= article.title %></h4>

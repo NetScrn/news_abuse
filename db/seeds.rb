@@ -23,5 +23,6 @@ end
                  description: Faker::Lorem.sentence(rand(1..3)),
                  body: Faker::Lorem.paragraphs(6).join(" "),
                  categories: Category.all.sample(3),
-                 author: User.first)
+                 author: User.first,
+                 confirmed_at: [Time.now, nil].sample)
 end

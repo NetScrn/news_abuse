@@ -33,6 +33,10 @@
             <li>
               <div class="recent-articles">
                 <a href="#" class="btn btn-danger btn-xs pull-right">Delete</a>
+                <%= link_to "Confirm", [:confirm, :admin, article], method: :patch,
+                            class: "btn btn-success btn-xs pull-right" %>
+                <%= link_to "Reject", [:reject, :admin, article], method: :delete,
+                            class: "btn btn-danger btn-xs pull-right" %>
                 <h4>
                   <%= article.title %> <small>By <em><%= article.author.username %></em>,
                     <%= article.created_at %></small>
@@ -55,7 +59,7 @@
         <nav class="admin-nav">
           <ul>
             <li><a href="#"><div><%= link_to "Users", admin_users_path %></div></a></li>
-            <li><a href="#"><div>Articles</div></a></li>
+            <li><a href="#"><div><%= link_to "Articles", admin_articles_path %></div></a></li>
             <li><a href="#"><div>Categories</div></a></li>
           </ul>
         </nav>

@@ -26,7 +26,12 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :articles, except: [:new, :create, :edit, :update]
+      resources :articles, only: [:index, :delete] do
+        member do
+          patch  :confirm
+          delete :reject
+        end
+      end
     end
   end
 end
