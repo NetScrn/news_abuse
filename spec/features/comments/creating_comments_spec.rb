@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Comments creating' do
   let(:user)    { create(:user) }
   let(:article) { create(:article, author: user) }
-  let(:comment) { create(:comment, article: article)}
+  let(:comment) { create(:comment, article: article) }
+  let(:subcomment) { create(:comment, article: article,
+                                      parent: comment,
+                                      content: "To tell you I'am sorry") }
 
   it 'unauthenticated user can create comment' do
     visit article_path("en", article)
@@ -22,7 +25,6 @@ RSpec.describe 'Comments creating' do
 
   it 'authenticated user can create comment' do
     login_as user
-
     visit article_path("en", article)
 
     within(".comments-container") do
@@ -37,20 +39,33 @@ RSpec.describe 'Comments creating' do
     end
   end
 
-  it 'user can comment a comment', js: true do
-    comment
-    visit article_path("en", article)
+  context 'user can comment a comment' do
+    it 'successfully', js: true do
+      comment
+      visit article_path("en", article)
 
-    within "#comment-#{comment.id}" do
-      click_link "Reply"
-      fill_in "Content", with: "I must've called a thousand times"
-      click_button "Create Comment"
+      within("#comment-#{comment.id}") do
+        click_link "Reply"
+        fill_in "Content", with: "I must've called a thousand times"
+        click_button "Create Comment"
+      end
+
+      within("#comment-#{comment.id + 1}") do
+        expect(page).to have_content "I must've called a thousand times"
+      end
     end
 
-    within "#comment-#{comment.id + 1}" do
-      expect(page).to have_content "I must've called a thousand times"
-    end
+    it 'without comment all comments of root', js: true do
+      subcomment
+      visit article_path("en", article)
 
+      within("#comment-#{subcomment.id}") do
+        click_link "Reply"
+        fill_in "Content", with: "for i'am breaking you heart"
+        click_button "Create Comment"
+      end
+
+      expect(page).to have_content "for i'am breaking you heart", count: 1
+    end
   end
-
 end

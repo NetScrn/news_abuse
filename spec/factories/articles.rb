@@ -3,9 +3,8 @@ FactoryGirl.define do
     title "RoR Tutorial"
     description "Really good RoR tutorial bla bla bla"
     body { Faker::Lorem.paragraphs(6).join(" ") }
-    categories [Category.new(name: "OpaOpa OPa")] # dont know how to do this shit good, becouse of that,
+    categories [Category.new(name: "OpaOpa OPa")] # must be commented out on migrations!
     confirmed_at { Time.now }
-    # rake db tasks broken, comment out this when do it
 
     trait :unconfirmed do
       confirmed_at nil

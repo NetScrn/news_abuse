@@ -20,7 +20,8 @@ class CommentsController < ApplicationController
   end
 
   def create_subcomment
-    @subcomment = @comment.subcomments.build(comment_params)
+    @subcomment = Comment.new(comment_params)
+    @subcomment.parent = @comment
     @subcomment.article = @article
     @subcomment.author = current_user if current_user
     if @subcomment.save

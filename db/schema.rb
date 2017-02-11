@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722091300) do
+ActiveRecord::Schema.define(version: 20170208084158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20160722091300) do
     t.datetime "updated_at", null: false
     t.integer  "author_id"
     t.integer  "article_id"
-    t.integer  "comment_id"
+    t.string   "ancestry"
   end
 
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
-  add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
 
   create_table "redactor_assets", force: :cascade do |t|
     t.integer  "user_id"
@@ -100,6 +100,5 @@ ActiveRecord::Schema.define(version: 20160722091300) do
 
   add_foreign_key "articles", "users", column: "author_id"
   add_foreign_key "comments", "articles"
-  add_foreign_key "comments", "comments"
   add_foreign_key "comments", "users", column: "author_id"
 end

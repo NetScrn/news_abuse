@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = @article.comments.where(comment_id: nil)
+    @comments = @article.comments.roots
   end
 
   def edit
@@ -33,14 +33,14 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       flash.now[:danger] = t(:article_n_updated)
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @article.destroy
     flash[:success] = t(:article_deleted)
-    if request.referrer.include? "admin/articles"
+    if request.referrer.include? 'admin/articles'
       redirect_to :back
     else
       redirect_to categories_url
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
     end
 
     def build_categories_for(article)
-      ids = params.fetch(:categories, []).reject {|k,v| v == ""}.map {|k,v| v.to_i}.uniq
+      ids = params.fetch(:categories, []).reject {|_,v| v == ''}.map {|_,v| v.to_i}.uniq
       article.category_ids = ids if ids.any?
     end
 

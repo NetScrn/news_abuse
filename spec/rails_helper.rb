@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 
-Capybara.default_wait_time = 15
+Capybara.default_max_wait_time = 15
 #
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -79,5 +79,5 @@ RSpec.configure do |config|
   # Devise helpers
   config.include Warden::Test::Helpers, type: :feature
   config.after(type: :feature) { Warden.test_reset! }
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

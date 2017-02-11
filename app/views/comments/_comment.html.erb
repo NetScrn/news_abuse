@@ -6,9 +6,9 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading"><%= comment.author ? comment.author.username : t(:guest) %>
-      <% if comment.parent_comment %>
-        <% if comment.parent_comment.author %>
-          <small><%= t(:replied_to) %> <span><%= comment.parent_comment.author.username %></span></small>
+      <% if comment.parent %>
+        <% if comment.parent.author %>
+          <small><%= t(:replied_to) %> <span><%= comment.parent.author.username %></span></small>
         <% else %>
           <small><%=t(:replied_to)%> <span><%= t(:guest) %></span></small>
         <% end %>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="subcomment">
-      <%= render comment.subcomments, article: @article %>
+      <%= render comment.children, article: @article %>
     </div>
   </div>
 </div>

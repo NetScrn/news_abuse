@@ -19,6 +19,7 @@ gem 'react-rails', '~> 1.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'faker'
 gem 'sidekiq'
+gem 'ancestry'
 
 group :development, :test do
   gem 'byebug'
